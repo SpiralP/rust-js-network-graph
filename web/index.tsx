@@ -28,6 +28,7 @@ export class NetworkGraph extends React.Component<{}, NetworkGraphState> {
 
   handleMessage(msg: string) {
     const event: RustEvent = JSON.parse(msg);
+
     if (event.type === "AddNode") {
       this.nodes.add(event.data);
     } else if (event.type === "AddEdge") {

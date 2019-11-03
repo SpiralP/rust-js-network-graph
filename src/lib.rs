@@ -71,10 +71,10 @@ impl NetworkGraphController {
       .await
   }
 
-  pub async fn add_edge(&mut self, from_id: NodeId, to_id: NodeId, edge: Edge) -> Result<()> {
-    let id = get_edge_id(from_id, to_id);
+  pub async fn add_edge(&mut self, from: NodeId, to: NodeId, edge: Edge) -> Result<()> {
+    let id = get_edge_id(&from, &to);
     self
-      .send_event(Event::AddEdge(EdgeWithId { id, edge }))
+      .send_event(Event::AddEdge(EdgeWithId { id, from, to, edge }))
       .await
   }
 
@@ -84,10 +84,10 @@ impl NetworkGraphController {
       .await
   }
 
-  pub async fn update_edge(&mut self, from_id: NodeId, to_id: NodeId, edge: Edge) -> Result<()> {
-    let id = get_edge_id(from_id, to_id);
+  pub async fn update_edge(&mut self, from: NodeId, to: NodeId, edge: Edge) -> Result<()> {
+    let id = get_edge_id(&from, &to);
     self
-      .send_event(Event::UpdateEdge(EdgeWithId { id, edge }))
+      .send_event(Event::UpdateEdge(EdgeWithId { id, from, to, edge }))
       .await
   }
 
@@ -100,7 +100,7 @@ impl NetworkGraphController {
   }
 }
 
-pub fn get_edge_id(a: NodeId, b: NodeId) -> EdgeId {
+pub fn get_edge_id(a: &str, b: &str) -> EdgeId {
   if a >= b {
     format!("{}{}", a, b)
   } else {
@@ -111,11 +111,33 @@ pub fn get_edge_id(a: NodeId, b: NodeId) -> EdgeId {
 pub type NodeId = String;
 pub type EdgeId = String;
 
-#[derive(Serialize)]
-pub struct Node {}
+#[derive(Debug, Default, Serialize)]
+pub struct Node {
+  pub label: Option<String>,
+  pub title: Option<String>,
+  pub icon: Option<Icon>,
+}
 
-#[derive(Serialize)]
-pub struct Edge {}
+#[derive(Debug, Default, Serialize)]
+pub struct Icon {
+  pub code: String,
+  pub size: u8,
+  pub color: String,
+}
+
+#[derive(Debug, Default, Serialize)]
+pub struct Edge {
+  pub dashes: Option<bool>,
+  pub width: Option<u8>,
+  pub color: Option<Color>,
+}
+
+#[derive(Debug, Default, Serialize)]
+pub struct Color {
+  pub color: String,
+  pub highlight: String,
+  pub hover: String,
+}
 
 #[derive(Serialize)]
 pub struct NodeWithId {
@@ -128,6 +150,9 @@ pub struct NodeWithId {
 #[derive(Serialize)]
 pub struct EdgeWithId {
   id: EdgeId,
+
+  from: EdgeId,
+  to: EdgeId,
 
   #[serde(flatten)]
   edge: Edge,
