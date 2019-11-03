@@ -2,10 +2,57 @@
 # yarn lockfile v1
 
 
+"@egjs/hammerjs@^2.0.15":
+  version "2.0.15"
+  resolved "https://registry.yarnpkg.com/@egjs/hammerjs/-/hammerjs-2.0.15.tgz#b6ef675540d275f7445647a64413af425b97bb9a"
+  integrity sha512-BysW5KdNiJ1Qq4JRILaX/Lx2eJGyVPsFSwKA3aJbY+SKv57lS5ZFbEdlgj5shfYPLeJGEnK1WjfleDT+y4s1aQ==
+  dependencies:
+    "@types/hammerjs" "^2.0.36"
+
+"@types/hammerjs@^2.0.36":
+  version "2.0.36"
+  resolved "https://registry.yarnpkg.com/@types/hammerjs/-/hammerjs-2.0.36.tgz#17ce0a235e9ffbcdcdf5095646b374c2bf615a4c"
+  integrity sha512-7TUK/k2/QGpEAv/BCwSHlYu3NXZhQ9ZwBYpzr9tjlPIL2C5BeGhH3DmVavRx3ZNyELX5TLC91JTz/cen6AAtIQ==
+
+"@types/prop-types@*":
+  version "15.7.3"
+  resolved "https://registry.yarnpkg.com/@types/prop-types/-/prop-types-15.7.3.tgz#2ab0d5da2e5815f94b0b9d4b95d1e5f243ab2ca7"
+  integrity sha512-KfRL3PuHmqQLOG+2tGpRO26Ctg+Cq1E01D2DMriKEATHgWLfeNDmq9e29Q9WIky0dQ3NPkd1mzYH8Lm936Z9qw==
+
+"@types/react@^16.9.11":
+  version "16.9.11"
+  resolved "https://registry.yarnpkg.com/@types/react/-/react-16.9.11.tgz#70e0b7ad79058a7842f25ccf2999807076ada120"
+  integrity sha512-UBT4GZ3PokTXSWmdgC/GeCGEJXE5ofWyibCcecRLUVN2ZBpXQGVgQGtG2foS7CrTKFKlQVVswLvf7Js6XA/CVQ==
+  dependencies:
+    "@types/prop-types" "*"
+    csstype "^2.2.0"
+
+"@types/vis@^4.21.19":
+  version "4.21.19"
+  resolved "https://registry.yarnpkg.com/@types/vis/-/vis-4.21.19.tgz#e1ad964deed4d1a5499312410e2ce19693378a78"
+  integrity sha512-SzD6R7pg3TcpzIj+F++ez83WuWhOZ+D05LCbjCaVR41NbMpS6xAdc8lActRK3Cwd9cv5LmoCeN5SAsvXIeAseg==
+  dependencies:
+    moment ">=2.13.0"
+
+component-emitter@^1.3.0:
+  version "1.3.0"
+  resolved "https://registry.yarnpkg.com/component-emitter/-/component-emitter-1.3.0.tgz#16e4070fba8ae29b679f2215853ee181ab2eabc0"
+  integrity sha512-Rd3se6QB+sO1TwqZjscQrurpEPIfO0/yYnSin6Q/rD3mOutHvUrCAhJub3r90uNb+SESBuE0QYoB90YdfatsRg==
+
+csstype@^2.2.0:
+  version "2.6.7"
+  resolved "https://registry.yarnpkg.com/csstype/-/csstype-2.6.7.tgz#20b0024c20b6718f4eda3853a1f5a1cce7f5e4a5"
+  integrity sha512-9Mcn9sFbGBAdmimWb2gLVDtFJzeKtDGIr76TUqmjZrw9LFXBMSU70lcs+C0/7fyCd6iBDqmksUcCOUIkisPHsQ==
+
 "js-tokens@^3.0.0 || ^4.0.0":
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
   integrity sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==
+
+keycharm@^0.2.0:
+  version "0.2.0"
+  resolved "https://registry.yarnpkg.com/keycharm/-/keycharm-0.2.0.tgz#fa6ea2e43b90a68028843d27f2075d35a8c3e6f9"
+  integrity sha1-+m6i5DuQpoAohD0n8gddNajD5vk=
 
 loose-envify@^1.1.0, loose-envify@^1.4.0:
   version "1.4.0"
@@ -13,6 +60,11 @@ loose-envify@^1.1.0, loose-envify@^1.4.0:
   integrity sha512-lyuxPGr/Wfhrlem2CL/UcnUc1zcqKAImBDzukY7Y5F/yQiNdko6+fRLevlw1HgMySw7f611UIY408EtxRSoK3Q==
   dependencies:
     js-tokens "^3.0.0 || ^4.0.0"
+
+moment@>=2.13.0, moment@^2.24.0:
+  version "2.24.0"
+  resolved "https://registry.yarnpkg.com/moment/-/moment-2.24.0.tgz#0d055d53f5052aa653c9f6eb68bb5d12bf5c2b5b"
+  integrity sha512-bV7f+6l2QigeBBZSM/6yTNq4P2fNpSWj/0e7jQcy87A8e7o2nAfP/34/2ky5Vw4B9S446EtIhodAzkFCcR4dQg==
 
 object-assign@^4.1.1:
   version "4.1.1"
@@ -65,12 +117,45 @@ scheduler@^0.17.0:
     loose-envify "^1.1.0"
     object-assign "^4.1.1"
 
+timsort@^0.3.0:
+  version "0.3.0"
+  resolved "https://registry.yarnpkg.com/timsort/-/timsort-0.3.0.tgz#405411a8e7e6339fe64db9a234de11dc31e02bd4"
+  integrity sha1-QFQRqOfmM5/mTbmiNN4R3DHgK9Q=
+
 typescript@^3.6.4:
   version "3.6.4"
   resolved "https://registry.yarnpkg.com/typescript/-/typescript-3.6.4.tgz#b18752bb3792bc1a0281335f7f6ebf1bbfc5b91d"
   integrity sha512-unoCll1+l+YK4i4F8f22TaNVPRHcD9PA3yCuZ8g5e0qGqlVlJ/8FSateOLLSagn+Yg5+ZwuPkL8LFUc0Jcvksg==
 
-vis-network@^6.3.1:
-  version "6.3.1"
-  resolved "https://registry.yarnpkg.com/vis-network/-/vis-network-6.3.1.tgz#e4195e897df366573621dccddb5897ac49bee261"
-  integrity sha512-i8QT5i0vfJGI3S7W/kKTcPzxYhDu/EtXgyv1ew5eb1H5VBoxB3QldRsrvZpzNYgCaYoto9/LAhAKIHZJins9Hg==
+vis-data@^6.1.1:
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/vis-data/-/vis-data-6.2.1.tgz#286c57e812d1f85601d248485e519b51dca67b51"
+  integrity sha512-y80h+jJ6gQXfeWqDdts9UTrLubggx99Q0dJionQF/XxHIbcxNZ+2cuwv4y+bIapVF9nW0DyE08EcMMlicAlSWg==
+  dependencies:
+    vis-util "^1.1.0"
+
+vis-network@^5.4.1:
+  version "5.4.1"
+  resolved "https://registry.yarnpkg.com/vis-network/-/vis-network-5.4.1.tgz#e0e33d23775e834f4cfd961bd7b92bf11df097c6"
+  integrity sha512-hUJlFWoCmLup6IxoXCr//OO2ZCkC8jrXEkkHLG1DhBgB54Y3K33+e5q4tc436inMlGzfqqaKTIToNbOGr8Szww==
+  dependencies:
+    "@egjs/hammerjs" "^2.0.15"
+    component-emitter "^1.3.0"
+    keycharm "^0.2.0"
+    moment "^2.24.0"
+    timsort "^0.3.0"
+    vis-data "^6.1.1"
+    vis-util "^1.1.6"
+
+vis-util@^1.1.0, vis-util@^1.1.6:
+  version "1.1.8"
+  resolved "https://registry.yarnpkg.com/vis-util/-/vis-util-1.1.8.tgz#d4b5c37b2c327ed2df1cb02d0b55882156c66374"
+  integrity sha512-gX461BUrYnHfDpMalvQdQ26SG/DplIvsK7u5KUCWEfPpcnTXm22FtQH5a+GIbDBcePe1sm578mpbWwTbCgRVww==
+  dependencies:
+    moment "^2.24.0"
+    vis-uuid "^1.1.3"
+
+vis-uuid@^1.1.3:
+  version "1.1.3"
+  resolved "https://registry.yarnpkg.com/vis-uuid/-/vis-uuid-1.1.3.tgz#2f53ff35e9e026b0ec93bc433ce685c40c2f784c"
+  integrity sha512-2B6XdY1bkzbUh+TugmnAaFa61KO9R5pzBzIuFIm8a9FrkbxIdSmQXV+FbfkL8QunkQV/bT0JDLQ2puqCS2+0Og==
