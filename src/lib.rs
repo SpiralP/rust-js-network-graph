@@ -111,32 +111,66 @@ pub fn get_edge_id(a: &str, b: &str) -> EdgeId {
 pub type NodeId = String;
 pub type EdgeId = String;
 
-#[derive(Debug, Default, Serialize)]
+#[derive(Debug, Serialize)]
 pub struct Node {
-  pub label: Option<String>,
-  pub title: Option<String>,
+  pub label: String,
+  pub title: String,
   pub icon: Option<Icon>,
 }
 
-#[derive(Debug, Default, Serialize)]
+impl Default for Node {
+  fn default() -> Self {
+    Self {
+      label: "".to_string(),
+      title: "".to_string(),
+      icon: None,
+    }
+  }
+}
+
+#[derive(Debug, Serialize)]
 pub struct Icon {
   pub code: String,
   pub size: u8,
   pub color: String,
 }
 
-#[derive(Debug, Default, Serialize)]
+#[derive(Debug, Serialize)]
 pub struct Edge {
-  pub dashes: Option<bool>,
-  pub width: Option<u8>,
-  pub color: Option<Color>,
+  pub label: String,
+  pub title: String,
+  pub dashes: bool,
+  pub width: u8,
+  pub color: Color,
 }
 
-#[derive(Debug, Default, Serialize)]
+impl Default for Edge {
+  fn default() -> Self {
+    Self {
+      label: "".to_string(),
+      title: "".to_string(),
+      dashes: false,
+      width: 3,
+      color: Default::default(),
+    }
+  }
+}
+
+#[derive(Debug, Serialize)]
 pub struct Color {
   pub color: String,
   pub highlight: String,
   pub hover: String,
+}
+
+impl Default for Color {
+  fn default() -> Self {
+    Self {
+      color: "#2B7CE9".to_string(),
+      highlight: "#2B7CE9".to_string(),
+      hover: "#2B7CE9".to_string(),
+    }
+  }
 }
 
 #[derive(Serialize)]

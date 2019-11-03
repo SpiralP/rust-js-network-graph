@@ -1,3 +1,4 @@
+import "vis-network/dist/vis-network.css";
 import React from "react";
 import vis from "vis-network";
 interface NetworkGraphState {

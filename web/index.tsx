@@ -1,3 +1,4 @@
+import "vis-network/dist/vis-network.css"; // for popups
 import React from "react";
 import Websocket from "react-websocket";
 import vis from "vis-network";
