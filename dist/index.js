@@ -16,19 +16,34 @@ class NetworkGraph extends react_1.default.Component {
         this.nodes = new vis_network_1.default.DataSet();
         this.edges = new vis_network_1.default.DataSet();
     }
-    updateNode(id, node) {
+    updateNode(node) {
         // console.log(`Network updateNode ${id}`);
-        node.id = id;
         this.nodes.update(node);
     }
-    updateEdge(id, edge) {
+    updateEdge(edge) {
         // console.log(`Network updateEdge ${id}`);
-        edge.id = id;
         this.edges.update(edge);
     }
     handleMessage(msg) {
-        //
-        console.log(msg);
+        const event = JSON.parse(msg);
+        if (event.type === "AddNode") {
+            this.nodes.add(event.data);
+        }
+        else if (event.type === "AddEdge") {
+            this.edges.add(event.data);
+        }
+        else if (event.type === "UpdateNode") {
+            this.nodes.update(event.data);
+        }
+        else if (event.type === "UpdateEdge") {
+            this.edges.update(event.data);
+        }
+        else if (event.type === "RemoveNode") {
+            this.nodes.remove(event.data);
+        }
+        else if (event.type === "RemoveEdge") {
+            this.edges.remove(event.data);
+        }
     }
     render() {
         const { nodes, edges } = this;

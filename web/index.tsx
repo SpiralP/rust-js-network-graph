@@ -2,6 +2,7 @@ import React from "react";
 import Websocket from "react-websocket";
 import vis from "vis-network";
 import Network from "./Network";
+import { RustEvent } from "./types";
 
 interface NetworkGraphState {
   connected: boolean;
@@ -15,22 +16,31 @@ export class NetworkGraph extends React.Component<{}, NetworkGraphState> {
   nodes: vis.DataSet<vis.Node> = new vis.DataSet();
   edges: vis.DataSet<vis.Edge> = new vis.DataSet();
 
-  updateNode(id: string, node: vis.Node) {
+  updateNode(node: vis.Node) {
     // console.log(`Network updateNode ${id}`);
-    node.id = id;
     this.nodes.update(node);
   }
 
-  updateEdge(id: string, edge: vis.Edge) {
+  updateEdge(edge: vis.Edge) {
     // console.log(`Network updateEdge ${id}`);
-
-    edge.id = id;
     this.edges.update(edge);
   }
 
   handleMessage(msg: string) {
-    //
-    console.log(msg);
+    const event: RustEvent = JSON.parse(msg);
+    if (event.type === "AddNode") {
+      this.nodes.add(event.data);
+    } else if (event.type === "AddEdge") {
+      this.edges.add(event.data);
+    } else if (event.type === "UpdateNode") {
+      this.nodes.update(event.data);
+    } else if (event.type === "UpdateEdge") {
+      this.edges.update(event.data);
+    } else if (event.type === "RemoveNode") {
+      this.nodes.remove(event.data);
+    } else if (event.type === "RemoveEdge") {
+      this.edges.remove(event.data);
+    }
   }
 
   render() {

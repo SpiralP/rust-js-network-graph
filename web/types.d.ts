@@ -1,7 +1,39 @@
-interface Node {}
+import vis from "vis-network";
 
-interface NewNodeEvent {
-  node: Node;
+interface AddNodeEvent {
+  type: "AddNode";
+  data: vis.Node;
 }
 
-type RustEvent = NewNodeEvent;
+interface AddEdgeEvent {
+  type: "AddEdge";
+  data: vis.Edge;
+}
+
+interface UpdateNodeEvent {
+  type: "UpdateNode";
+  data: vis.Node;
+}
+
+interface UpdateEdgeEvent {
+  type: "UpdateEdge";
+  data: vis.Edge;
+}
+
+interface RemoveNodeEvent {
+  type: "RemoveNode";
+  data: string;
+}
+
+interface RemoveEdgeEvent {
+  type: "RemoveEdge";
+  data: string;
+}
+
+type RustEvent =
+  | AddNodeEvent
+  | AddEdgeEvent
+  | UpdateNodeEvent
+  | UpdateEdgeEvent
+  | RemoveNodeEvent
+  | RemoveEdgeEvent;
