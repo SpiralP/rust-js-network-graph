@@ -31,7 +31,7 @@ where
     )
   }
 
-  pub async fn process(mut self) -> Result<()> {
+  pub async fn process_events(mut self) -> Result<()> {
     while let Some(bytes) = self.receiver.next().await {
       self
         .sink
@@ -50,12 +50,8 @@ pub struct NetworkGraphController {
 }
 
 impl NetworkGraphController {
-  pub async fn add_node(&mut self) -> Result<()> {
-    #[derive(Serialize)]
-    struct Node {};
-
-    let node = Node {};
-    let serialized = serde_json::to_vec(&node).chain_err(|| "serde_json serialize error")?;
+  async fn send_event(&mut self, event: Event) -> Result<()> {
+    let serialized = serde_json::to_vec(&event).chain_err(|| "serde_json serialize error")?;
 
     self
       .sender
@@ -65,4 +61,20 @@ impl NetworkGraphController {
 
     Ok(())
   }
+
+  pub async fn add_node(&mut self) -> Result<()> {
+    let node = Node {};
+
+    self.send_event(Event::NewNode(node)).await?;
+
+    Ok(())
+  }
+}
+
+#[derive(Serialize)]
+pub struct Node {}
+
+#[derive(Serialize)]
+enum Event {
+  NewNode(Node),
 }
