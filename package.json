@@ -1,0 +1,12 @@
+{
+  "name": "rust-js-network-graph",
+  "version": "1.0.0",
+  "author": "SpiralP <spiral.palmer@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "react-websocket": "^2.0.1",
+    "vis-network": "^6.3.1"
+  }
+}
